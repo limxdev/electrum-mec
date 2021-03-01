@@ -7,9 +7,9 @@
 ;Variables
 ;--------------------------------
 
-  !define PRODUCT_NAME "electrum-btx"
-  !define PRODUCT_WEB_SITE "https://github.com/LIMXTEC/electrum-btx"
-  !define PRODUCT_PUBLISHER "bitcore.cc"
+  !define PRODUCT_NAME "electrum-mec"
+  !define PRODUCT_WEB_SITE "https://github.com/limxdev/electrum-mec"
+  !define PRODUCT_PUBLISHER "megacoin-mec.cc"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
 ;--------------------------------
@@ -128,10 +128,10 @@ Section
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe" 0
 
   ;Links bitcoin: URI's to Electrum
-  WriteRegStr HKCU "Software\Classes\bitcore" "" "URL:bitcore Protocol"
-  WriteRegStr HKCU "Software\Classes\bitcore" "URL Protocol" ""
-  WriteRegStr HKCU "Software\Classes\bitcore" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\bitcore\shell\open\command" "" "$\"$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  WriteRegStr HKCU "Software\Classes\megacoin-electrum" "" "URL:megacoin-electrum Protocol"
+  WriteRegStr HKCU "Software\Classes\megacoin-electrum" "URL Protocol" ""
+  WriteRegStr HKCU "Software\Classes\megacoin-electrum" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
+  WriteRegStr HKCU "Software\Classes\megacoin-electrum\shell\open\command" "" "$\"$INSTDIR\${PRODUCT_NAME}-${PRODUCT_VERSION}.exe$\" $\"%1$\""
 
   ;Adds an uninstaller possibility to Windows Uninstall or change a program section
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"

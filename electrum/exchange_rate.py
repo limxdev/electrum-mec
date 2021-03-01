@@ -306,12 +306,12 @@ class CoinGecko(ExchangeBase):
         #return dict([(ccy.upper(), Decimal(d['value']))
         #             for ccy, d in json['rates'].items()])
         #ccys = ["BTC", "ETH", "LTC", "BCH", "BNB", "EOS", "XRP", "XLM", "USD", "AED", "ARS", "AUD", "BDT", "BHD", "BMD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "KWD", "LKR", "MMK", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SAR", "SEK", "SGD", "THB", "TRY", "TWD", "UAH", "VEF", "VND", "ZAR", "XDR", "XAG", "XAU"]
-        #json = await self.get_json('api.coingecko.com', '/api/v3/simple/price?ids=bitcore&vs_currencies=%s' % ccy)
+        #json = await self.get_json('api.coingecko.com', '/api/v3/simple/price?ids=megacoin&vs_currencies=%s' % ccy)
         #result = dict.fromkeys(ccys)
         #if ccy in ccys:
-        #    result[ccy] = Decimal(json['bitcore'][ccy.lower()])
+        #    result[ccy] = Decimal(json['megacoin'][ccy.lower()])
         #return result
-        json = await self.get_json('api.coingecko.com', '/api/v3/coins/bitcore?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false')
+        json = await self.get_json('api.coingecko.com', '/api/v3/coins/megacoin?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false')
         return dict([(ccy.upper(), Decimal(d))
                      for ccy, d in json['market_data']['current_price'].items()])
 
@@ -321,7 +321,7 @@ class CoinGecko(ExchangeBase):
 
     async def request_history(self, ccy):
         history = await self.get_json('api.coingecko.com',
-                                      '/api/v3/coins/bitcoin/market_chart?vs_currency=%s&days=max' % ccy)
+                                      '/api/v3/coins/megacoin/market_chart?vs_currency=%s&days=max' % ccy)
 
         return dict([(datetime.utcfromtimestamp(h[0]/1000).strftime('%Y-%m-%d'), h[1])
                      for h in history['prices']])
@@ -379,7 +379,7 @@ class TheRockTrading(ExchangeBase):
 
 class CoinMarketCap(ExchangeBase):
     def get_rates(self, ccy):
-        json = self.get_json("api.coinmarketcap.com", "/v1/ticker/bitcore/?convert=" + ccy)
+        json = self.get_json("api.coinmarketcap.com", "/v1/ticker/megacoin/?convert=" + ccy)
         return {ccy: Decimal(json[0]["price_" + ccy.lower()])}
 
 class Winkdex(ExchangeBase):

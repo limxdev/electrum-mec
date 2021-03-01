@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME_ROOT=electrum-btx
+NAME_ROOT=electrum-mec
 
 # These settings probably don't need any change
 export WINEPREFIX=/opt/wine64

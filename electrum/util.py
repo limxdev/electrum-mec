@@ -65,9 +65,9 @@ def inv_dict(d):
 ca_path = certifi.where()
 
 
-base_units = {'BTX':8, 'mBTX':5, 'bits':2, 'sat':0}
+base_units = {'MEC':8, 'mMEC':5, 'bits':2, 'sat':0}
 base_units_inverse = inv_dict(base_units)
-base_units_list = ['BTX', 'mBTX', 'bits', 'sat']  # list(dict) does not guarantee order
+base_units_list = ['MEC', 'mMEC', 'bits', 'sat']  # list(dict) does not guarantee order
 
 DECIMAL_POINT_DEFAULT = 5  # mBTC
 
@@ -76,7 +76,7 @@ class UnknownBaseUnit(Exception): pass
 
 
 def decimal_point_to_base_unit_name(dp: int) -> str:
-    # e.g. 8 -> "BTX"
+    # e.g. 8 -> "MEC"
     try:
         return base_units_inverse[dp]
     except KeyError:
@@ -84,7 +84,7 @@ def decimal_point_to_base_unit_name(dp: int) -> str:
 
 
 def base_unit_name_to_decimal_point(unit_name: str) -> int:
-    # e.g. "BTX" -> 8
+    # e.g. "MEC" -> 8
     try:
         return base_units[unit_name]
     except KeyError:
@@ -152,7 +152,7 @@ class Satoshis(object):
         return 'Satoshis(%d)'%self.value
 
     def __str__(self):
-        return format_satoshis(self.value) + " BTX"
+        return format_satoshis(self.value) + " MEC"
 
     def __eq__(self, other):
         return self.value == other.value
@@ -472,11 +472,11 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-btx")
+        return os.path.join(os.environ["HOME"], ".electrum-mec")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-BTX")
+        return os.path.join(os.environ["APPDATA"], "Electrum-MEC")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-BTX")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-MEC")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -648,11 +648,9 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'bitcore.cc': ('https://insight.bitcore.cc/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
     'cryptoID': ('https://chainz.cryptoid.info/',
-                        {'tx': 'btx/tx.dws?', 'addr': 'address.dws?'}),
-    'system default': ('https://insight.bitcore.cc/',
+                        {'tx': 'mec/tx.dws?', 'addr': 'address.dws?'}),
+    'system default': ('https://chainz.cryptoid.info/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 

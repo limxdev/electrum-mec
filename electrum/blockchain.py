@@ -597,7 +597,7 @@ class Blockchain(Logger):
         assert idx >= 0, idx
         try:
             data = bfh(hexdata)
-            #BTX: deactivated
+            #MEC: deactivated
             #self.verify_chunk(idx, data)
             self.save_chunk(idx, data)
             return True

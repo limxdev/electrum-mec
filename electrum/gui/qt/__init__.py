@@ -94,7 +94,7 @@ class ElectrumGui(Logger):
         if hasattr(QtCore.Qt, "AA_ShareOpenGLContexts"):
             QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
         if hasattr(QGuiApplication, 'setDesktopFileName'):
-            QGuiApplication.setDesktopFileName('electrum-btx.desktop')
+            QGuiApplication.setDesktopFileName('electrum-mec.desktop')
         self.gui_thread = threading.current_thread()
         self.config = config
         self.daemon = daemon

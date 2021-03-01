@@ -633,7 +633,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu = menubar.addMenu(_("&Help"))
         help_menu.addAction(_("&About"), self.show_about)
         help_menu.addAction(_("&Check for updates"), self.show_update_check)
-        help_menu.addAction(_("&Official website"), lambda: webbrowser.open("https://bitcore.cc"))
+        help_menu.addAction(_("&Official website"), lambda: webbrowser.open("https://megacoin-mec.cc"))
         help_menu.addSeparator()
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
@@ -646,7 +646,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         d = self.network.get_donation_address()
         if d:
             host = self.network.get_parameters().host
-            self.pay_to_URI('bitcore:%s?message=donation for %s'%(d, host))
+            self.pay_to_URI('megacoin:%s?message=donation for %s'%(d, host))
         else:
             self.show_error(_('No donation address for this server'))
 
@@ -934,8 +934,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         msg = ' '.join([
             _('Expiration date of your request.'),
             _('This information is seen by the recipient if you send them a signed payment request.'),
-            _('Expired requests have to be deleted manually from your list, in order to free the corresponding Bitcore addresses.'),
-            _('The bitcore address never expires and will always be part of this electrum wallet.'),
+            _('Expired requests have to be deleted manually from your list, in order to free the corresponding Megacoin addresses.'),
+            _('The megacoin address never expires and will always be part of this electrum wallet.'),
         ])
         grid.addWidget(HelpLabel(_('Request expires'), msg), 3, 0)
         grid.addWidget(self.expires_combo, 3, 1)
@@ -2515,8 +2515,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             return
         if not data:
             return
-        # if the user scanned a bitcore URI
-        if str(data).startswith("bitcore:"):
+        # if the user scanned a megacoin URI
+        if str(data).startswith("megacoin:"):
             self.pay_to_URI(data)
             return
         # else if the user scanned an offline signed tx
@@ -2961,7 +2961,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         units = base_units_list
         msg = (_('Base unit of your wallet.')
-               + '\n1 BTX = 1000 mBTX. 1 mBTX = 1000 bits. 1 bit = 100 sat.\n'
+               + '\n1 MEC = 1000 mMEC. 1 mMEC = 1000 bits. 1 bit = 100 sat.\n'
                + _('This setting affects the Send tab, and all balance related fields.'))
         unit_label = HelpLabel(_('Base unit') + ':', msg)
         unit_combo = QComboBox()

@@ -7,7 +7,7 @@ dist/
 electrum/locale/
 contrib/build-wine/LICENSE
 contrib/pyinstaller/
-Electrum_BTX.egg-info/
+Electrum_MEC.egg-info/
 LC_MESSAGES/
 .devlocaltmp/
 *_trial_temp

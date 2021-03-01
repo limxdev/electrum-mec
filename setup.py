@@ -46,7 +46,7 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-btx.desktop']),
+        (os.path.join(usr_share, 'applications/'), ['electrum-mec.desktop']),
         (os.path.join(usr_share, icons_dirname), ['electrum/gui/icons/electrumBTX.png']),
     ]
 
@@ -59,7 +59,7 @@ extras_require['full'] = [pkg for sublist in list(extras_require.values()) for p
 
 
 setup(
-    name="Electrum-BTX",
+    name="Electrum-MEC",
     version=version.ELECTRUM_VERSION,
     python_requires='>={}'.format(MIN_PYTHON_VERSION),
     install_requires=requirements,
@@ -83,13 +83,13 @@ setup(
             'icons/*',
         ],
     },
-    scripts=['electrum/electrum-btx'],
+    scripts=['electrum/electrum-mec'],
     data_files=data_files,
     description="Lightweight Bitcore Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="https://bitcore.cc",
+    url="https://megacoin-mec.cc",
     long_description="""Lightweight Bitcore Wallet""",
     #cmdclass={
     #    'install': CustomInstallCommand,

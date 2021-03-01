@@ -1,5 +1,5 @@
 # If you want Electrum to appear in a Linux app launcher ("start menu"), install this by doing:
-# sudo desktop-file-install electrum-btx.desktop
+# sudo desktop-file-install electrum-mec.desktop
 
 [Desktop Entry]
 Comment=Lightweight Bitcore Client
@@ -18,5 +18,5 @@ MimeType=x-scheme-handler/bitcore;
 Actions=Testnet;
 
 [Desktop Action Testnet]
-Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-btx --testnet %u"
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-mec --testnet %u"
 Name=Testnet mode

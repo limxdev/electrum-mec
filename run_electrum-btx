@@ -4,7 +4,7 @@
 # Electrum - lightweight Bitcoin client
 # Copyright (C) 2011 thomasv@gitorious
 #
-# Electrum-BTX - lightweight Bitcore client
+# Electrum-MEC - lightweight Bitcore client
 # Copyright (C) 2018 LIMXTEC
 #
 # Permission is hereby granted, free of charge, to any person
@@ -41,7 +41,7 @@ if sys.version_info[:3] < _min_python_version_tuple:
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 is_bundle = getattr(sys, 'frozen', False)
-is_local = not is_bundle and os.path.exists(os.path.join(script_dir, "electrum-btx.desktop"))
+is_local = not is_bundle and os.path.exists(os.path.join(script_dir, "electrum-mec.desktop"))
 is_android = 'ANDROID_DATA' in os.environ
 
 if is_local:  # running from source
@@ -331,7 +331,7 @@ if __name__ == '__main__':
         config_options['portable'] = True
 
     if config_options.get('portable'):
-        config_options['electrum_path'] = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum-btx_data')
+        config_options['electrum_path'] = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum-mec_data')
 
     if not config_options.get('verbosity'):
         warnings.simplefilter('ignore', DeprecationWarning)
@@ -422,7 +422,7 @@ if __name__ == '__main__':
         else:
             cmd = known_commands[cmdname]
             if cmd.requires_network:
-                print_msg("Daemon not running; try 'electrum-btx daemon start'")
+                print_msg("Daemon not running; try 'electrum-mec daemon start'")
                 sys.exit(1)
             else:
                 plugins = init_plugins(config, 'cmdline')
