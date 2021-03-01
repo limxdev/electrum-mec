@@ -1,4 +1,4 @@
-Electrum-MEC - Lightweight Bitcore client
+Electrum-MEC - Lightweight Megacoin client
 =========================================
 
 ::

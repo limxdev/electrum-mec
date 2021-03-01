@@ -40,7 +40,7 @@
 
 # Release 3.3.6-mec - (June 05, 2019)
 
- * add Bitcore MEC support for version 3.3.6
+ * add Megacoin MEC support for version 3.3.6
 
 # Release 3.3.6 - (May 16, 2019)
 
@@ -167,7 +167,7 @@
 
 # Release 3.2.3-mec - (November 16, 2018)
 
- * add Bitcore MEC support
+ * add Megacoin MEC support
 
 # Release 3.2.3 - (September 3, 2018)
 

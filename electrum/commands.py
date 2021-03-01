@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight Bitcore client
+# Electrum - lightweight Megacoin client
 # Copyright (C) 2011 thomasv@gitorious
 #
 # Permission is hereby granted, free of charge, to any person
@@ -777,8 +777,8 @@ def eval_bool(x: str) -> bool:
 
 param_descriptions = {
     'privkey': 'Private key. Type \'?\' to get a prompt.',
-    'destination': 'Bitcore address, contact or alias',
-    'address': 'Bitcore address',
+    'destination': 'Megacoin address, contact or alias',
+    'address': 'Megacoin address',
     'seed': 'Seed phrase',
     'txid': 'Transaction ID',
     'pos': 'Position',

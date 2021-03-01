@@ -2,13 +2,13 @@
 # sudo desktop-file-install electrum-mec.desktop
 
 [Desktop Entry]
-Comment=Lightweight Bitcore Client
+Comment=Lightweight Megacoin Client
 Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum %u"
-GenericName[en_US]=Bitcore Wallet
-GenericName=Bitcore Wallet
+GenericName[en_US]=Megacoin Wallet
+GenericName=Megacoin Wallet
 Icon=electrum
-Name[en_US]=Electrum Bitcore Wallet
-Name=Electrum Bitcore Wallet
+Name[en_US]=Electrum Megacoin Wallet
+Name=Electrum Megacoin Wallet
 Categories=Finance;Network;
 StartupNotify=true
 StartupWMClass=electrum
