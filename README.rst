@@ -21,7 +21,7 @@ Electrum-MEC from its root directory, without installing it on your
 system; all the python dependencies are included in the 'packages'
 directory. To run Electrum from its root directory, just do::
 
-    ./run_electrum-mec
+    ./run_electrum_mec
 
 You can also install Electrum-MEC on your system, by running this command::
 
@@ -44,7 +44,7 @@ Development version
 
 Check out the code from GitHub::
 
-    git clone git://github.com/LIMXTEC/electrum-mec.git
+    git clone git://github.com/limxdev/electrum-mec.git
     cd electrum-mec
 
 Run install (this should install dependencies)::
