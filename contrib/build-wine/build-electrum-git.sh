@@ -1,12 +1,11 @@
 #!/bin/bash
 
-NAME_ROOT=electrum-mec
+NAME_ROOT=electrum
 
 # These settings probably don't need any change
 export WINEPREFIX=/opt/wine64
 export WINEDEBUG=-all
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONHASHSEED=22
 
 PYHOME=c:/python3
 PYTHON="wine $PYHOME/python.exe -OO -B"
@@ -41,16 +40,18 @@ popd
 find -exec touch -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
-# Install frozen dependencies
-$PYTHON -m pip install --no-warn-script-location -r "$CONTRIB"/deterministic-build/requirements.txt
 
-$PYTHON -m pip install --no-warn-script-location -r "$CONTRIB"/deterministic-build/requirements-hw.txt
+# Install frozen dependencies
+$PYTHON -m pip install --no-dependencies --no-warn-script-location -r "$CONTRIB"/deterministic-build/requirements.txt
+
+$PYTHON -m pip install --no-dependencies --no-warn-script-location -r "$CONTRIB"/deterministic-build/requirements-hw.txt
 
 pushd $WINEPREFIX/drive_c/electrum
 # see https://github.com/pypa/pip/issues/2195 -- pip makes a copy of the entire directory
 info "Pip installing Electrum. This might take a long time if the project folder is large."
-$PYTHON -m pip install --no-warn-script-location .
+$PYTHON -m pip install --no-dependencies --no-warn-script-location .
 popd
+
 
 rm -rf dist/
 
@@ -68,7 +69,7 @@ info "building NSIS installer"
 wine "$WINEPREFIX/drive_c/Program Files (x86)/NSIS/makensis.exe" /DPRODUCT_VERSION=$VERSION electrum.nsi
 
 cd dist
-mv  $NAME_ROOT-setup.exe $NAME_ROOT-$VERSION-setup.exe
+mv electrum-setup.exe $NAME_ROOT-$VERSION-setup.exe
 cd ..
 
 info "Padding binaries to 8-byte boundaries, and fixing COFF image checksum in PE header"
@@ -86,9 +87,11 @@ with open(pe_file, "rb") as f:
 pe_offset = int.from_bytes(binary[0x3c:0x3c+4], byteorder="little")
 checksum_offset = pe_offset + 88
 checksum = 0
+
 # Pad data to 8-byte boundary.
 remainder = len(binary) % 8
 binary += bytes(8 - remainder)
+
 for i in range(len(binary) // 4):
     if i == checksum_offset // 4:  # Skip the checksum field
         continue
@@ -96,17 +99,19 @@ for i in range(len(binary) // 4):
     checksum = (checksum & 0xffffffff) + dword + (checksum >> 32)
     if checksum > 2 ** 32:
         checksum = (checksum & 0xffffffff) + (checksum >> 32)
+
 checksum = (checksum & 0xffff) + (checksum >> 16)
 checksum = (checksum) + (checksum >> 16)
 checksum = checksum & 0xffff
 checksum += len(binary)
+
 # Set the checksum
 binary[checksum_offset : checksum_offset + 4] = int.to_bytes(checksum, byteorder="little", length=4)
+
 with open(pe_file, "wb") as f:
     f.write(binary)
 EOF
     done
 )
 
-echo "Done."
-sha256sum dist/electrum*exe
+sha256sum dist/electrum*.exe
